@@ -31,3 +31,5 @@ def blog_detail(request, pk):
     }
 
     return render(request, "blog/detail.html", context)
+
+

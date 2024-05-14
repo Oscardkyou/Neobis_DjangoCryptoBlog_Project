@@ -1,0 +1,29 @@
+<!-- shortener/templates/shortener/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">URL Shortener</h1>
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="original_url">Enter your URL:</label>
+                <input type="url" class="form-control" id="original_url" name="original_url" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Shorten</button>
+        </form>
+        {% if short_url %}
+            <div class="mt-4">
+                <h2>Your shortened URL:</h2>
+                <a href="{{ short_url }}" target="_blank">{{ short_url }}</a>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
