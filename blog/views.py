@@ -1,7 +1,10 @@
 # blog/views.py
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from blog.models import Post, Comment
+from .forms import RegisterForm
+from django.contrib.auth import login, authenticate
+
 
 def blog_index(request):
     posts = Post.objects.all().order_by("-created_on")
@@ -33,3 +36,16 @@ def blog_detail(request, pk):
     return render(request, "blog/detail.html", context)
 
 
+def register(request):
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect("blog_index")
+    else:
+        form = RegisterForm()
+    return render(request, "registration/register.html", {"form": form})
