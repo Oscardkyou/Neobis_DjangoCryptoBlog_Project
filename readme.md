@@ -55,6 +55,8 @@ Contributions are welcome! If you have suggestions for improvements or bug fixes
 
 ![Home Page](/img/last.png)
 
+![Page](/img/432.png)
+
 ## Key Considerations
 - Ensure simplicity and clarity in code and UI.
 - Use comments to explain complex sections of code.
