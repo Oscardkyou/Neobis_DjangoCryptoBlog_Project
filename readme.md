@@ -53,7 +53,7 @@ Contributions are welcome! If you have suggestions for improvements or bug fixes
 
 ## Screenshots
 
-![Home Page](/img/432.png)
+![Home Page](/img/last.png)
 
 ## Key Considerations
 - Ensure simplicity and clarity in code and UI.

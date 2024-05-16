@@ -1,16 +1,31 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
 {% block page_title %}
-    <h2>{{ post.title }}</h2>
-{% endblock page_title %}
+    <title>{{ post.title }}</title>
+{% endblock %}
 
 {% block page_content %}
-    <small>
-        {{ post.created_on.date }} | Categories:
-        {% for category in post.categories.all %}
-            <a href="{% url 'blog_category' category.name %}">
-                {{ category.name }}
-            </a>
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.body }}</p>
+    <p>Categories:
+    {% for category in post.categories.all %}
+        {{ category.name }}{% if not forloop.last %}, {% endif %}
+    {% endfor %}
+    </p>
+    <hr>
+    <h3>Comments</h3>
+    <div>
+        {% for comment in comments %}
+            <p><strong>{{ comment.author }}</strong>: {{ comment.body }}</p>
+            <p><small>{{ comment.created_on }}</small></p>
+            <hr>
         {% endfor %}
-    </small>
-    <p>{{ post.body | linebreaks }}</p>
-{% endblock page_content %}
+    </div>
+    <h3>Add a comment</h3>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="author" placeholder="Your name">
+        <textarea name="body" placeholder="Your comment"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}

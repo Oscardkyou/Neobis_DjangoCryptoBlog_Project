@@ -10,14 +10,13 @@
     <a href="{% url 'blog_index' %}">Home</a>
 
     {% if user.is_authenticated %}
-        <form id="logout-form" method="post" action="{% url 'logout' %}">
+        <form method="post" action="{% url 'logout' %}" style="display:inline;">
             {% csrf_token %}
             <button type="submit">Logout</button>
         </form>
         <p>Welcome, {{ user.username }}!</p>
     {% else %}
         <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'register' %}">Register</a>
     {% endif %}
 
     <hr>
