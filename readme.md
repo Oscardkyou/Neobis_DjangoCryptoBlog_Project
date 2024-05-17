@@ -61,3 +61,6 @@ Contributions are welcome! If you have suggestions for improvements or bug fixes
 - Ensure simplicity and clarity in code and UI.
 - Use comments to explain complex sections of code.
 - Document your code adequately to help future contributors understand and work with it.
+
+## Buy Me a Coffee
+If you find this project useful, please consider supporting me by buying me a coffee.
